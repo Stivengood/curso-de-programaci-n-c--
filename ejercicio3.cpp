@@ -23,3 +23,28 @@ int main(){
     mostrarResultado(area);
     return 0;
 }
+void leerNumero(int &a, int &b){
+    cout<<"Ingrese altura :";
+    cin>>a;
+    cout<<"Ingrese base :";
+    cin>>b;
+}
+int calcularArea(int a, int b){
+    if (a !=b)
+    {
+        return a*b;
+    }else{
+        return 0;
+    }
+    
+}
+void mostrarResultado(int area){
+    cout<<"---Resultado---"<<endl;
+    if (area == 0)
+    {
+        cout<<"Error: Esto es un cuadrado";
+    }else{
+        cout<<"El area del rectangulo es de :"<<area<<endl;
+    }
+    
+}
