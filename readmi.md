@@ -1,4 +1,4 @@
-[9:26 p.m., 15/5/2026] +593 98 977 7836: # Bootcamp Programacion de Cero a POO
+# Bootcamp Programacion de Cero a POO
 
 ## Descripcion
 Este repositorio corresponde al bootcamp *Programacion de Cero a POO*, un curso virtual en vivo orientado a estudiantes que estan iniciando en programacion y deseando construir una base solida antes de avanzar hacia Programacion Orientada a Objetos.
