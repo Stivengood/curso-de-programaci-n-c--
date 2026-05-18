@@ -7,18 +7,16 @@ E/P/S
 Entrada:
      seleccionar productos
      seleccionar si seguir o pagar
-     ingresar la cantidad que debe de pagar
 Proceso:
      leer productos seleccionados
      calcular si pagado es igual a pagar 
 Salida:
-    mostrar los productos que compro
     mostrar su cambio 
 pseint:
     definimos los productos
     mostrar productos
     leer productos
-    mostrar productos seleccionados con su precio a pagar
+    mostrar su precio a pagar
     leer pagado
 
     SI
@@ -26,37 +24,73 @@ pseint:
        mostrar cambio
     SiNo
        mostrar lo que falta a pagar
-    mostrar productos elejidos 
-    mostrar valor ha pagar 
     FinSi       
 */
 #include <iostream>
 using namespace std;
-string productos[5]={"leche", "arroz", "aceite", "atun", "cereal"};
-double precioProductos[5]={1.00, 0.80, 0.85, 1.05,1.70 };
-int cantidadProductos[5]={3, 5, 2, 4, 3};
-int productoElejidos[5]={0, 0, 0, 0, 0};
-void mostrarProductosElejidos();
-double calcularPrecio(int elejidos, double pagar);
-int main(){
+
+string productos[5] = {"leche", "arroz", "aceite", "atun", "cereal"};
+double precioProductos[5] = {1.00, 0.85, 0.85, 1.05, 1.73};
+int productoElejidos[5] = {0, 0, 0, 0, 0};
+void calcularPrecio(double total, double pagoIngresado);
+
+int main() {
     int elejidos;
-    double pagar;
-    char continuar='y';
-    char seguirComprando='s';
-    char salir='k';
-    cout<<"Bienvenido al tuti"<<endl;
-    do
-    {
-        cout<<"\nDisponibilidad de productos"<<endl;
-        for (int i = 0; i < 5; i++)
-        {
-            cout<<cantidadProductos[i]<<"."<<productos[i]<<"=$"precioProductos[i]<<endl;
-            
-            
+    double pagarDinero;
+    double totalFinal = 0;
+
+    cout << "---Bienvenido al Tuti---" << endl;
+    cout << "\nPRODUCTOS DISPONIBLES:" << endl;
+    for (int i = 0; i < 5; i++) {
+        cout << i + 1 << ". " << productos[i] << ": $" << precioProductos[i]<<endl;
+    }
+    cout << "ingrese el numero [0] para pagar"<< endl;
+    cout << "\nIngrese numero del 1 al 5 para elejir el producto: ";
+    //usamos un bucle para seguir comprando o ir a pagar
+    do {
+        cin>> elejidos;
+        if (elejidos >= 1 && elejidos <= 5) {
+            int indice = elejidos - 1;
+            productoElejidos[indice]++; 
+            cout << ">> Agregaste: " << productos[indice] << " al carrito." << endl;
+        } 
+        else if (elejidos != 0) {
+            cout << ">> Numero fuera de rango." << endl;
         }
-        
-    } while ( );
-    
+    //el bucle continua hasta seleccionar el cero
+    } while (elejidos != 0); 
+    // alamcenamos los productos elejidos con su precio
+    for (int i = 0; i < 5; i++) {
+        totalFinal += productoElejidos[i] * precioProductos[i];
+    }
+    // mostramos cuanto debe de cancelar el cliente
+    if (totalFinal > 0) {
+        cout << "TOTAL A PAGAR: $" << totalFinal << endl;
+        cout << "Ingrese con cuanto va a pagar: $";
+        cin >> pagarDinero;
 
-
+        // guardamos los datos en la funcion 
+        calcularPrecio(totalFinal, pagarDinero);
+    } else {
+        cout <<"No compraste nada, ¡vuelve pronto!"<< endl;
+    }
+    return 0;
 }
+void calcularPrecio(double total, double pagoIngresado) {
+    if (pagoIngresado >= total) {
+        double vuelto = pagoIngresado - total;
+        cout <<"---Gracias por su compra---"<<endl;
+        cout << "Su vuelto es: $" << vuelto << endl;
+    } else {
+        double falta = total - pagoIngresado;
+        cout <<"---Dinero insuficiente---"<<endl;
+        cout <<"Le faltan: $"<< falta <<endl;
+    }
+}
+
+
+
+
+
+
+
