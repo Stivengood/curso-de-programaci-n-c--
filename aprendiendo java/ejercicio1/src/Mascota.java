@@ -1,3 +1,7 @@
+/* 
+Autor: Stiven Jami
+Tarea: Ejercicio 1
+ */
 public class Mascota {
     String nombre;
     String especie;
@@ -9,7 +13,7 @@ public class Mascota {
     }
     public void mostrarInfo(){
     System.out.println("Nombre:"+ this.nombre);
-    System.out.println("Especie: + this.especie");
+    System.out.println("Especie:" + this.especie);
     System.out.println("Edad:" + this.edad);
 
     }
