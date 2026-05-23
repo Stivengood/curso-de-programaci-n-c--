@@ -23,21 +23,15 @@ public class Telefono {
     public void setMarca(String marca){
         this.marca = marca;
     }
-    public setModelo(String modelo){
+    public void setModelo(String modelo){
         this.modelo = modelo;
     }
 
-    public void setPrecio(){
+    public void setPrecio(int precio){
         if (precio >= 0 ) {
             this.precio = precio;
         }else{
             System.out.println("Error: Valor ingresado invalido");
         }
-
-
     }
-    
-
-
-
 }
